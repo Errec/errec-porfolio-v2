@@ -570,26 +570,31 @@ body{
     outline:solid #151515 4px
 }
 #wli-0{
-    -webkit-box-flex:11;
-    -ms-flex:11;
-    flex:11
+    -webkit-box-flex:12;
+    -ms-flex:12;
+    flex:12
 }
 #wli-1{
-    -webkit-box-flex:8;
-    -ms-flex:8;
-    flex:8
+    -webkit-box-flex:9;
+    -ms-flex:9;
+    flex:9
 }
 #wli-2{
-    -webkit-box-flex:6;
-    -ms-flex:6;
-    flex:6
+    -webkit-box-flex:7;
+    -ms-flex:7;
+    flex:7
 }
 #wli-3{
-    -webkit-box-flex:4;
-    -ms-flex:4;
-    flex:4
+    -webkit-box-flex:5;
+    -ms-flex:5;
+    flex:5
 }
 #wli-4{
+    -webkit-box-flex:3;
+    -ms-flex:3;
+    flex:3
+}
+#wli-5{
     -webkit-box-flex:2;
     -ms-flex:2;
     flex:2
@@ -991,7 +996,10 @@ body{
         background-image:url(/img/slider/ttts_small.png)
     }
     #work-img-5{
-        background-image:url(/img/slider/twitch_small.png)
+        background-image:url(/img/slider/brookling-film-festival_small.png)
+    }
+    #work-img-6{
+        background-image:url(/img/slider/muncak-hiking_small.png)
     }
     .main-work{
         padding-bottom:0
@@ -1151,7 +1159,7 @@ body{
     .main-work__img--small{
         display:none
     }
-    #wli-0:hover,#wli-1:hover,#wli-2:hover,#wli-3:hover,#wli-4:hover{
+    #wli-0:hover,#wli-1:hover,#wli-2:hover,#wli-3:hover,#wli-4:hover,#wli-5:hover{
         -webkit-filter:none;
         filter:none;
         -webkit-box-flex:110;
@@ -1171,6 +1179,9 @@ body{
         background-image:url(/img/slider/ttts_large.png)
     }
     #work-img-5{
-        background-image:url(/img/slider/twitch_large.png)
+        background-image:url(/img/slider/brookling-film-festival_large.png)
+    }
+    #work-img-6{
+        background-image:url(/img/slider/muncak-hiking_large.png)
     }
 }
