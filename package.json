@@ -1,0 +1,13 @@
+{
+  "name": "errec-portfolio-v2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:js": "python scripts/build_js.py",
+    "build": "npm run build:js && npm run build:sitemap",
+    "check:js": "python scripts/check_js_quality.py",
+    "build:sitemap": "python scripts/generate_sitemaps.py",
+    "lint": "python scripts/lint_frontend.py",
+    "ci:check": "npm run build && npm run check:js && npm run lint && node --check src/js/main.js && node --check js/bundle.min.js"
+  }
+}
