@@ -4,3 +4,6 @@
 /* CTA responsiveness hotfix */
 .main-slogan__cta{margin-top:14px;width:min(100%,272px);min-height:67px;font-size:clamp(1.44rem,3.84vw,2.4rem)}
 @media screen and (max-width:720px){.main-slogan{height:auto;padding-top:8px;padding-bottom:26px}.main-slogan__wrapper{display:flex;flex-direction:column;align-items:center;gap:10px}.main-slogan__cta{margin-top:0;width:min(100%,220px);min-height:52px;font-size:clamp(1.2rem,5.6vw,1.92rem)}}
+
+.header__nav a:focus-visible,.main-slogan__cta:focus-visible,.main-about a:focus-visible,.send-btn:focus-visible,.footer__pin-wrapper:focus-visible{outline:3px solid #0ff;outline-offset:3px;border-radius:4px}.main-about__form-status{margin-top:8px;min-height:20px;font-size:14px}.main-about__form-status--error{color:#ff6b6b}.main-about__form-status--success{color:#8ef0a0}
+.main-slogan__quick-links{margin-top:10px;font-size:14px}.main-slogan__quick-links a{color:#87e6f6}
