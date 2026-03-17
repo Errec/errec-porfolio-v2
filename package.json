@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build:js": "python scripts/build_js.py",
-    "build": "npm run build:js",
-    "check:js": "python scripts/check_js_quality.py"
+    "build": "npm run build:js && npm run build:sitemap",
+    "check:js": "python scripts/check_js_quality.py",
+    "build:sitemap": "python scripts/generate_sitemaps.py"
   }
 }
