@@ -135,16 +135,32 @@ const workGridAnimation = () => {
 const checkForm = () => {
   const message = document.getElementById('input-message');
   const email = document.getElementById('input-email');
+  const name = document.querySelector('input[name="name"]');
   const form = document.getElementById('about-form');
+  const status = document.getElementById('form-status');
   const button = document.getElementById('input-btn');
-  if (!message || !email || !form || !button) return;
+  if (!message || !email || !name || !form || !status || !button) return;
 
-  button.addEventListener('click', () => {
-    if (email.value && message.value) {
-      form.submit();
-    } else {
-      alert("Can't submit empty email/message");
+  const setStatus = (text, isError = false) => {
+    status.textContent = text;
+    status.classList.toggle('main-about__form-status--error', isError);
+    status.classList.toggle('main-about__form-status--success', !isError && text.length > 0);
+  };
+
+  form.addEventListener('submit', (event) => {
+    const emailValue = email.value.trim();
+    const nameValue = name.value.trim();
+    const messageValue = message.value.trim();
+
+    if (!emailValue || !nameValue || messageValue.length < 20 || !email.checkValidity()) {
+      event.preventDefault();
+      setStatus('Please provide a valid email, your name, and a message with at least 20 characters.', true);
+      return;
     }
+
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    setStatus('Sending your message...');
   });
 };
 
