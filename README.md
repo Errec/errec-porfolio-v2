@@ -24,7 +24,11 @@ Static portfolio website deployed on Vercel.
    ```bash
    npm run check:js
    ```
-3. Optional syntax validation:
+3. Run repository lint checks:
+   ```bash
+   npm run lint
+   ```
+4. Optional syntax validation:
    ```bash
    node --check src/js/main.js
    node --check js/bundle.min.js
@@ -32,3 +36,11 @@ Static portfolio website deployed on Vercel.
 
 ## Deployment
 Deployed on Vercel.
+
+
+## CI
+- GitHub Actions workflow: `.github/workflows/ci.yml`
+- Full local equivalent:
+  ```bash
+  npm run ci:check
+  ```

@@ -7,3 +7,4 @@
 
 .header__nav a:focus-visible,.main-slogan__cta:focus-visible,.main-about a:focus-visible,.send-btn:focus-visible,.footer__pin-wrapper:focus-visible{outline:3px solid #0ff;outline-offset:3px;border-radius:4px}.main-about__form-status{margin-top:8px;min-height:20px;font-size:14px}.main-about__form-status--error{color:#ff6b6b}.main-about__form-status--success{color:#8ef0a0}
 .main-slogan__quick-links{margin-top:10px;font-size:14px}.main-slogan__quick-links a{color:#87e6f6}
+.main-about__social-icon-img{width:40px;height:40px;display:block;object-fit:contain}
