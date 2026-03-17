@@ -210,6 +210,23 @@ const setupSmoothScrollPolyfill = () => {
   };
 };
 
+
+const setupConversionTracking = () => {
+  const trackedLinks = document.querySelectorAll('[data-track]');
+  trackedLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const eventName = link.getAttribute('data-track');
+      if (window.gtag) {
+        window.gtag('event', eventName, { event_category: 'engagement' });
+      }
+      if (window.plausible) {
+        window.plausible(eventName);
+      }
+      console.info(`[track] ${eventName}`);
+    });
+  });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   parallaxAboutBg();
   animatePin();
@@ -219,4 +236,5 @@ document.addEventListener('DOMContentLoaded', () => {
   checkForm();
   scrollToSections();
   setupSmoothScrollPolyfill();
+  setupConversionTracking();
 });

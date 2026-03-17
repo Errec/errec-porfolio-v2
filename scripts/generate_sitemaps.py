@@ -10,6 +10,8 @@ services = [
 articles = [
     '/articles/secure-authentication-ux-react',
     '/articles/frontend-devsecops-checklist',
+    '/articles/microfrontends-when-to-use',
+    '/articles/prompt-engineering-for-frontend-teams',
 ]
 projects = [
     '/',
