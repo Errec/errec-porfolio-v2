@@ -34,9 +34,9 @@ const throttle = (fn, wait, options = {}) => debounce(fn, wait, { ...options, ma
 
 const scrollToSections = () => {
   const sections = {
-    '.header__link-skills': '.main-skills',
-    '.header__link-work': '.main-work',
-    '.header__link-about': '.main-about',
+    '.header__link-skills': '#skills',
+    '.header__link-work': '#work',
+    '.header__link-about': '#about',
   };
 
   Object.entries(sections).forEach(([triggerSelector, targetSelector]) => {
@@ -45,8 +45,10 @@ const scrollToSections = () => {
 
     if (!trigger || !target) return;
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
+      target.focus({ preventScroll: true });
     });
   });
 };
