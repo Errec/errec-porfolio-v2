@@ -32,6 +32,25 @@ index_size_kb = Path('index.html').stat().st_size / 1024
 if index_size_kb > 250:
     errors.append(f'index.html too large ({index_size_kb:.1f}KB) - consider externalizing inline assets')
 
+# JSON-LD must be inline, not loaded via src attribute
+if re.search(r'<script type="application/ld\+json" src=', html):
+    errors.append('JSON-LD structured data must be inline, not loaded via src attribute')
+
+# Nav links must have href attributes
+nav_links = re.findall(r'<a class="header__link-[^"]*"[^>]*>', html)
+for tag in nav_links:
+    if 'href=' not in tag:
+        errors.append(f'Nav link missing href attribute: {tag[:120]}')
+
+# Skip-to-content must be present for accessibility
+if 'class="skip-to-content"' not in html:
+    errors.append('Missing skip-to-content link for keyboard accessibility')
+
+# prefers-reduced-motion must be in CSS
+css = Path('css/main.min.css').read_text()
+if 'prefers-reduced-motion' not in css:
+    errors.append('CSS missing prefers-reduced-motion media query')
+
 if errors:
     print('LINT FAILED')
     for err in errors:
