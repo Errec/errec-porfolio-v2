@@ -36,6 +36,7 @@ const scrollToSections = () => {
   const sections = {
     '.header__link-skills': '#skills',
     '.header__link-work': '#work',
+    '.header__link-trust': '#trust',
     '.header__link-about': '#about',
   };
 
