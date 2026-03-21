@@ -60,7 +60,7 @@ const parallaxAboutBg = () => {
 
   const onScroll = () => {
     if (window.scrollY + window.innerHeight - about.clientHeight / 1.2 > about.offsetTop) {
-      bg.style.transform = 'translate3d(0, -100%, 0)';
+      bg.classList.add('main-about__paralax-wrapper--exit');
       window.removeEventListener('scroll', onScroll);
     }
   };
