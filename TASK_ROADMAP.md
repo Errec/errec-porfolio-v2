@@ -35,7 +35,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 
 ### 5) Maintainable source structure
 - [ ] Keep human-readable source HTML/CSS files and generate minified artifacts in build.
-- [ ] Add formatter/linter configuration for HTML/CSS/JS consistency.
+- [x] Add formatter/linter configuration for HTML/CSS/JS consistency.
 
 ## Phase 3 — Performance & platform hardening (Week 3)
 
