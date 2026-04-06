@@ -32,6 +32,36 @@ const debounce = (fn, wait, options = {}) => {
 
 const throttle = (fn, wait, options = {}) => debounce(fn, wait, { ...options, maxWait: wait });
 
+const CONTACT_FORM_ERROR_MESSAGES = {
+  email: 'Please enter a valid email address.',
+  name: 'Please enter your name.',
+  message: 'Please provide at least 20 characters about your project.',
+};
+
+const normalizeFieldValue = (value) => (typeof value === 'string' ? value.trim() : '');
+
+const validateContactFormValues = (values) => {
+  const email = normalizeFieldValue(values?.email);
+  const name = normalizeFieldValue(values?.name);
+  const message = normalizeFieldValue(values?.message);
+  const isEmailNativeValid = Boolean(values?.isEmailNativeValid);
+
+  const isEmailValid = Boolean(email) && isEmailNativeValid;
+  const isNameValid = Boolean(name);
+  const isMessageValid = message.length >= 20;
+
+  return {
+    isEmailValid,
+    isNameValid,
+    isMessageValid,
+    errors: {
+      email: isEmailValid ? '' : CONTACT_FORM_ERROR_MESSAGES.email,
+      name: isNameValid ? '' : CONTACT_FORM_ERROR_MESSAGES.name,
+      message: isMessageValid ? '' : CONTACT_FORM_ERROR_MESSAGES.message,
+    },
+  };
+};
+
 const scrollToSections = () => {
   const sections = {
     '.header__link-skills': '#skills',
@@ -141,59 +171,16 @@ const checkForm = () => {
   const form = document.getElementById('about-form');
   const status = document.getElementById('form-status');
   const button = document.getElementById('input-btn');
-  const emailError = document.getElementById('input-email-error');
-  const nameError = document.getElementById('input-name-error');
-  const messageError = document.getElementById('input-message-error');
-  if (!message || !email || !name || !form || !status || !button || !emailError || !nameError || !messageError) return;
-
-  const fieldDefinitions = {
-    email: {
-      element: email,
-      errorElement: emailError,
-      isValid: (value) => Boolean(value.trim()) && email.checkValidity(),
-      errorMessage: 'Please enter a valid email address.',
-    },
-    name: {
-      element: name,
-      errorElement: nameError,
-      isValid: (value) => Boolean(value.trim()),
-      errorMessage: 'Please enter your name.',
-    },
-    message: {
-      element: message,
-      errorElement: messageError,
-      isValid: (value) => value.trim().length >= 20,
-      errorMessage: 'Please provide at least 20 characters about your project.',
-    },
-  };
+  if (!message || !email || !name || !form || !status || !button) return;
 
   const markFieldValidity = (field, isValid) => {
     field.setAttribute('aria-invalid', String(!isValid));
   };
 
-  const setFieldError = (errorElement, text = '') => {
-    errorElement.textContent = text;
-  };
-
-  const validateField = (fieldKey) => {
-    const field = fieldDefinitions[fieldKey];
-    const value = field.element.value;
-    const isValid = field.isValid(value);
-
-    markFieldValidity(field.element, isValid);
-    setFieldError(field.errorElement, isValid ? '' : field.errorMessage);
-
-    return isValid;
-  };
-
-  const validateAllFields = () => {
-    const validationState = {
-      isEmailValid: validateField('email'),
-      isNameValid: validateField('name'),
-      isMessageValid: validateField('message'),
-    };
-
-    return validationState;
+  const markAllValidity = ({ isEmailValid, isNameValid, isMessageValid }) => {
+    markFieldValidity(email, isEmailValid);
+    markFieldValidity(name, isNameValid);
+    markFieldValidity(message, isMessageValid);
   };
 
   const setStatus = (text, isError = false) => {
@@ -202,20 +189,15 @@ const checkForm = () => {
     status.classList.toggle('main-about__form-status--success', !isError && text.length > 0);
   };
 
-  Object.entries(fieldDefinitions).forEach(([fieldKey, field]) => {
-    field.element.addEventListener('blur', () => {
-      validateField(fieldKey);
-    });
-
-    field.element.addEventListener('input', () => {
-      if (field.element.getAttribute('aria-invalid') === 'true') {
-        validateField(fieldKey);
-      }
-    });
-  });
-
   form.addEventListener('submit', (event) => {
-    const { isEmailValid, isNameValid, isMessageValid } = validateAllFields();
+    const { isEmailValid, isNameValid, isMessageValid } = validateContactFormValues({
+      email: email.value,
+      name: name.value,
+      message: message.value,
+      isEmailNativeValid: email.checkValidity(),
+    });
+
+    markAllValidity({ isEmailValid, isNameValid, isMessageValid });
 
     if (!isEmailValid || !isNameValid || !isMessageValid) {
       event.preventDefault();
@@ -316,14 +298,25 @@ const setupConversionTracking = () => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  parallaxAboutBg();
-  animatePin();
-  heroAnimation();
-  svgHover();
-  workGridAnimation();
-  checkForm();
-  scrollToSections();
-  setupSmoothScrollPolyfill();
-  setupConversionTracking();
-});
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    parallaxAboutBg();
+    animatePin();
+    heroAnimation();
+    svgHover();
+    workGridAnimation();
+    checkForm();
+    scrollToSections();
+    setupSmoothScrollPolyfill();
+    setupConversionTracking();
+  });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    debounce,
+    throttle,
+    validateContactFormValues,
+    CONTACT_FORM_ERROR_MESSAGES,
+  };
+}
