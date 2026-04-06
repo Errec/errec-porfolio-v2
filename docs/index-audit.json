@@ -1,0 +1,19 @@
+{
+  "source": {
+    "file": "src/html/index.html",
+    "bytes": 43357,
+    "total_tags": 210,
+    "svg_tags": 16,
+    "script_tags": 2,
+    "meta_tags": 21
+  },
+  "artifact": {
+    "file": "index.html",
+    "bytes": 38335,
+    "total_tags": 210,
+    "svg_tags": 16,
+    "script_tags": 2,
+    "meta_tags": 21
+  },
+  "note": "Lower byte and tag counts generally improve parse cost and maintainability."
+}
