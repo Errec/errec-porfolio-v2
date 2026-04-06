@@ -32,6 +32,36 @@ const debounce = (fn, wait, options = {}) => {
 
 const throttle = (fn, wait, options = {}) => debounce(fn, wait, { ...options, maxWait: wait });
 
+const CONTACT_FORM_ERROR_MESSAGES = {
+  email: 'Please enter a valid email address.',
+  name: 'Please enter your name.',
+  message: 'Please provide at least 20 characters about your project.',
+};
+
+const normalizeFieldValue = (value) => (typeof value === 'string' ? value.trim() : '');
+
+const validateContactFormValues = (values) => {
+  const email = normalizeFieldValue(values?.email);
+  const name = normalizeFieldValue(values?.name);
+  const message = normalizeFieldValue(values?.message);
+  const isEmailNativeValid = Boolean(values?.isEmailNativeValid);
+
+  const isEmailValid = Boolean(email) && isEmailNativeValid;
+  const isNameValid = Boolean(name);
+  const isMessageValid = message.length >= 20;
+
+  return {
+    isEmailValid,
+    isNameValid,
+    isMessageValid,
+    errors: {
+      email: isEmailValid ? '' : CONTACT_FORM_ERROR_MESSAGES.email,
+      name: isNameValid ? '' : CONTACT_FORM_ERROR_MESSAGES.name,
+      message: isMessageValid ? '' : CONTACT_FORM_ERROR_MESSAGES.message,
+    },
+  };
+};
+
 const scrollToSections = () => {
   const sections = {
     '.header__link-skills': '#skills',
@@ -150,20 +180,23 @@ const checkForm = () => {
     email: {
       element: email,
       errorElement: emailError,
-      isValid: (value) => Boolean(value.trim()) && email.checkValidity(),
-      errorMessage: 'Please enter a valid email address.',
+      isValid: (value) => validateContactFormValues({
+        email: value,
+        isEmailNativeValid: email.checkValidity(),
+      }).isEmailValid,
+      errorMessage: CONTACT_FORM_ERROR_MESSAGES.email,
     },
     name: {
       element: name,
       errorElement: nameError,
-      isValid: (value) => Boolean(value.trim()),
-      errorMessage: 'Please enter your name.',
+      isValid: (value) => validateContactFormValues({ name: value }).isNameValid,
+      errorMessage: CONTACT_FORM_ERROR_MESSAGES.name,
     },
     message: {
       element: message,
       errorElement: messageError,
-      isValid: (value) => value.trim().length >= 20,
-      errorMessage: 'Please provide at least 20 characters about your project.',
+      isValid: (value) => validateContactFormValues({ message: value }).isMessageValid,
+      errorMessage: CONTACT_FORM_ERROR_MESSAGES.message,
     },
   };
 
@@ -316,14 +349,25 @@ const setupConversionTracking = () => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  parallaxAboutBg();
-  animatePin();
-  heroAnimation();
-  svgHover();
-  workGridAnimation();
-  checkForm();
-  scrollToSections();
-  setupSmoothScrollPolyfill();
-  setupConversionTracking();
-});
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    parallaxAboutBg();
+    animatePin();
+    heroAnimation();
+    svgHover();
+    workGridAnimation();
+    checkForm();
+    scrollToSections();
+    setupSmoothScrollPolyfill();
+    setupConversionTracking();
+  });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    debounce,
+    throttle,
+    validateContactFormValues,
+    CONTACT_FORM_ERROR_MESSAGES,
+  };
+}
