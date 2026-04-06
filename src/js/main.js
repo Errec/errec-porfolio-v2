@@ -171,62 +171,16 @@ const checkForm = () => {
   const form = document.getElementById('about-form');
   const status = document.getElementById('form-status');
   const button = document.getElementById('input-btn');
-  const emailError = document.getElementById('input-email-error');
-  const nameError = document.getElementById('input-name-error');
-  const messageError = document.getElementById('input-message-error');
-  if (!message || !email || !name || !form || !status || !button || !emailError || !nameError || !messageError) return;
-
-  const fieldDefinitions = {
-    email: {
-      element: email,
-      errorElement: emailError,
-      isValid: (value) => validateContactFormValues({
-        email: value,
-        isEmailNativeValid: email.checkValidity(),
-      }).isEmailValid,
-      errorMessage: CONTACT_FORM_ERROR_MESSAGES.email,
-    },
-    name: {
-      element: name,
-      errorElement: nameError,
-      isValid: (value) => validateContactFormValues({ name: value }).isNameValid,
-      errorMessage: CONTACT_FORM_ERROR_MESSAGES.name,
-    },
-    message: {
-      element: message,
-      errorElement: messageError,
-      isValid: (value) => validateContactFormValues({ message: value }).isMessageValid,
-      errorMessage: CONTACT_FORM_ERROR_MESSAGES.message,
-    },
-  };
+  if (!message || !email || !name || !form || !status || !button) return;
 
   const markFieldValidity = (field, isValid) => {
     field.setAttribute('aria-invalid', String(!isValid));
   };
 
-  const setFieldError = (errorElement, text = '') => {
-    errorElement.textContent = text;
-  };
-
-  const validateField = (fieldKey) => {
-    const field = fieldDefinitions[fieldKey];
-    const value = field.element.value;
-    const isValid = field.isValid(value);
-
-    markFieldValidity(field.element, isValid);
-    setFieldError(field.errorElement, isValid ? '' : field.errorMessage);
-
-    return isValid;
-  };
-
-  const validateAllFields = () => {
-    const validationState = {
-      isEmailValid: validateField('email'),
-      isNameValid: validateField('name'),
-      isMessageValid: validateField('message'),
-    };
-
-    return validationState;
+  const markAllValidity = ({ isEmailValid, isNameValid, isMessageValid }) => {
+    markFieldValidity(email, isEmailValid);
+    markFieldValidity(name, isNameValid);
+    markFieldValidity(message, isMessageValid);
   };
 
   const setStatus = (text, isError = false) => {
@@ -235,20 +189,15 @@ const checkForm = () => {
     status.classList.toggle('main-about__form-status--success', !isError && text.length > 0);
   };
 
-  Object.entries(fieldDefinitions).forEach(([fieldKey, field]) => {
-    field.element.addEventListener('blur', () => {
-      validateField(fieldKey);
-    });
-
-    field.element.addEventListener('input', () => {
-      if (field.element.getAttribute('aria-invalid') === 'true') {
-        validateField(fieldKey);
-      }
-    });
-  });
-
   form.addEventListener('submit', (event) => {
-    const { isEmailValid, isNameValid, isMessageValid } = validateAllFields();
+    const { isEmailValid, isNameValid, isMessageValid } = validateContactFormValues({
+      email: email.value,
+      name: name.value,
+      message: message.value,
+      isEmailNativeValid: email.checkValidity(),
+    });
+
+    markAllValidity({ isEmailValid, isNameValid, isMessageValid });
 
     if (!isEmailValid || !isNameValid || !isMessageValid) {
       event.preventDefault();
