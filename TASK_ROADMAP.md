@@ -41,7 +41,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 
 ### 6) Frontend performance
 - [x] Audit and reduce `index.html` DOM/markup size.
-- [ ] Move heavy decorative SVG/icon markup to reusable sprite strategy where feasible.
+- [x] Move heavy decorative SVG/icon markup to reusable sprite strategy where feasible.
 - [ ] Add modern image formats and verify dimensions for all project assets.
 
 ### 7) Security and policy maturity
