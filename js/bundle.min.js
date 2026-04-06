@@ -141,16 +141,59 @@ const checkForm = () => {
   const form = document.getElementById('about-form');
   const status = document.getElementById('form-status');
   const button = document.getElementById('input-btn');
-  if (!message || !email || !name || !form || !status || !button) return;
+  const emailError = document.getElementById('input-email-error');
+  const nameError = document.getElementById('input-name-error');
+  const messageError = document.getElementById('input-message-error');
+  if (!message || !email || !name || !form || !status || !button || !emailError || !nameError || !messageError) return;
+
+  const fieldDefinitions = {
+    email: {
+      element: email,
+      errorElement: emailError,
+      isValid: (value) => Boolean(value.trim()) && email.checkValidity(),
+      errorMessage: 'Please enter a valid email address.',
+    },
+    name: {
+      element: name,
+      errorElement: nameError,
+      isValid: (value) => Boolean(value.trim()),
+      errorMessage: 'Please enter your name.',
+    },
+    message: {
+      element: message,
+      errorElement: messageError,
+      isValid: (value) => value.trim().length >= 20,
+      errorMessage: 'Please provide at least 20 characters about your project.',
+    },
+  };
 
   const markFieldValidity = (field, isValid) => {
     field.setAttribute('aria-invalid', String(!isValid));
   };
 
-  const markAllValidity = ({ isEmailValid, isNameValid, isMessageValid }) => {
-    markFieldValidity(email, isEmailValid);
-    markFieldValidity(name, isNameValid);
-    markFieldValidity(message, isMessageValid);
+  const setFieldError = (errorElement, text = '') => {
+    errorElement.textContent = text;
+  };
+
+  const validateField = (fieldKey) => {
+    const field = fieldDefinitions[fieldKey];
+    const value = field.element.value;
+    const isValid = field.isValid(value);
+
+    markFieldValidity(field.element, isValid);
+    setFieldError(field.errorElement, isValid ? '' : field.errorMessage);
+
+    return isValid;
+  };
+
+  const validateAllFields = () => {
+    const validationState = {
+      isEmailValid: validateField('email'),
+      isNameValid: validateField('name'),
+      isMessageValid: validateField('message'),
+    };
+
+    return validationState;
   };
 
   const setStatus = (text, isError = false) => {
@@ -159,15 +202,20 @@ const checkForm = () => {
     status.classList.toggle('main-about__form-status--success', !isError && text.length > 0);
   };
 
-  form.addEventListener('submit', (event) => {
-    const emailValue = email.value.trim();
-    const nameValue = name.value.trim();
-    const messageValue = message.value.trim();
-    const isEmailValid = Boolean(emailValue) && email.checkValidity();
-    const isNameValid = Boolean(nameValue);
-    const isMessageValid = messageValue.length >= 20;
+  Object.entries(fieldDefinitions).forEach(([fieldKey, field]) => {
+    field.element.addEventListener('blur', () => {
+      validateField(fieldKey);
+    });
 
-    markAllValidity({ isEmailValid, isNameValid, isMessageValid });
+    field.element.addEventListener('input', () => {
+      if (field.element.getAttribute('aria-invalid') === 'true') {
+        validateField(fieldKey);
+      }
+    });
+  });
+
+  form.addEventListener('submit', (event) => {
+    const { isEmailValid, isNameValid, isMessageValid } = validateAllFields();
 
     if (!isEmailValid || !isNameValid || !isMessageValid) {
       event.preventDefault();
@@ -229,10 +277,35 @@ const setupSmoothScrollPolyfill = () => {
 
 
 const setupConversionTracking = () => {
+  const isAnalyticsDebugEnabled = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const debugParam = params.get('analyticsDebug');
+
+      if (debugParam === '1' || debugParam === 'true') {
+        window.localStorage.setItem('analytics-debug', 'true');
+      }
+
+      if (debugParam === '0' || debugParam === 'false') {
+        window.localStorage.removeItem('analytics-debug');
+      }
+
+      return window.localStorage.getItem('analytics-debug') === 'true';
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const debugEnabled = isAnalyticsDebugEnabled();
   const trackedLinks = document.querySelectorAll('[data-track]');
   trackedLinks.forEach((link) => {
     link.addEventListener('click', () => {
       const eventName = link.getAttribute('data-track');
+
+      if (debugEnabled) {
+        console.debug('[analytics-debug] Tracking event:', eventName, link);
+      }
+
       if (window.gtag) {
         window.gtag('event', eventName, { event_category: 'engagement' });
       }
