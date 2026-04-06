@@ -45,7 +45,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 - [ ] Add modern image formats and verify dimensions for all project assets.
 
 ### 7) Security and policy maturity
-- [ ] Review CSP against analytics/runtime integrations and tighten allowlists.
+- [x] Review CSP against analytics/runtime integrations and tighten allowlists.
 - [x] Add privacy note for form/analytics data handling.
 
 ## Phase 4 — Governance (Week 4)
