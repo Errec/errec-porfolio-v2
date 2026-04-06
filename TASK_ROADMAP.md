@@ -24,12 +24,12 @@ This roadmap converts the latest review into concrete implementation tasks.
 2. [x] Extend form validation to write errors per field and keep `aria-invalid` updated on blur/input.
 3. [x] Add an opt-in analytics debug mode (`?analyticsDebug=1`) persisted in localStorage.
 4. [ ] Run automated a11y checks and address critical issues from the report.
-5. [ ] Add unit tests for validation logic to protect the new per-field behavior.
+5. [x] Add unit tests for validation logic to protect the new per-field behavior.
 
 ## Phase 2 — Reliability & quality (Week 2)
 
 ### 4) Automated testing foundation
-- [ ] Add unit tests for validation logic and utility behavior (debounce/throttle).
+- [x] Add unit tests for validation logic and utility behavior (debounce/throttle).
 - [ ] Add Playwright smoke tests for navigation + contact form behavior.
 - [ ] Add accessibility CI gate (axe/Lighthouse threshold).
 
