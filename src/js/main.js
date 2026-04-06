@@ -143,6 +143,16 @@ const checkForm = () => {
   const button = document.getElementById('input-btn');
   if (!message || !email || !name || !form || !status || !button) return;
 
+  const markFieldValidity = (field, isValid) => {
+    field.setAttribute('aria-invalid', String(!isValid));
+  };
+
+  const markAllValidity = ({ isEmailValid, isNameValid, isMessageValid }) => {
+    markFieldValidity(email, isEmailValid);
+    markFieldValidity(name, isNameValid);
+    markFieldValidity(message, isMessageValid);
+  };
+
   const setStatus = (text, isError = false) => {
     status.textContent = text;
     status.classList.toggle('main-about__form-status--error', isError);
@@ -153,8 +163,13 @@ const checkForm = () => {
     const emailValue = email.value.trim();
     const nameValue = name.value.trim();
     const messageValue = message.value.trim();
+    const isEmailValid = Boolean(emailValue) && email.checkValidity();
+    const isNameValid = Boolean(nameValue);
+    const isMessageValid = messageValue.length >= 20;
 
-    if (!emailValue || !nameValue || messageValue.length < 20 || !email.checkValidity()) {
+    markAllValidity({ isEmailValid, isNameValid, isMessageValid });
+
+    if (!isEmailValid || !isNameValid || !isMessageValid) {
       event.preventDefault();
       setStatus('Please provide a valid email, your name, and a message with at least 20 characters.', true);
       return;
@@ -224,7 +239,6 @@ const setupConversionTracking = () => {
       if (window.plausible) {
         window.plausible(eventName);
       }
-      console.info(`[track] ${eventName}`);
     });
   });
 };
