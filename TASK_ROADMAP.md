@@ -8,7 +8,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 - [x] Add explicit form labels (screen-reader friendly) for contact inputs.
 - [x] Add `aria-invalid` state handling for email/name/message validation.
 - [x] Add per-field helper/error messages and map with `aria-describedby`.
-- [ ] Run automated a11y checks (axe/Lighthouse) and fix critical issues.
+- [x] Run automated a11y checks (axe/Lighthouse) and fix critical issues.
 
 ### 2) Presentation consistency
 - [x] Remove repeated inline `style` attributes from service/article/case pages.
@@ -23,13 +23,13 @@ This roadmap converts the latest review into concrete implementation tasks.
 1. [x] Add per-field helper/error elements in the contact form markup with dedicated IDs.
 2. [x] Extend form validation to write errors per field and keep `aria-invalid` updated on blur/input.
 3. [x] Add an opt-in analytics debug mode (`?analyticsDebug=1`) persisted in localStorage.
-4. [ ] Run automated a11y checks and address critical issues from the report.
-5. [ ] Add unit tests for validation logic to protect the new per-field behavior.
+4. [x] Run automated a11y checks and address critical issues from the report.
+5. [x] Add unit tests for validation logic to protect the new per-field behavior.
 
 ## Phase 2 — Reliability & quality (Week 2)
 
 ### 4) Automated testing foundation
-- [ ] Add unit tests for validation logic and utility behavior (debounce/throttle).
+- [x] Add unit tests for validation logic and utility behavior (debounce/throttle).
 - [ ] Add Playwright smoke tests for navigation + contact form behavior.
 - [ ] Add accessibility CI gate (axe/Lighthouse threshold).
 
