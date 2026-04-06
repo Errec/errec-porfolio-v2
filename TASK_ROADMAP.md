@@ -53,7 +53,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 ### 8) Team workflow
 - [x] Add CONTRIBUTING guide with style, naming, and review checklist.
 - [x] Add checklist-driven PR template (a11y, security, performance, tests).
-- [ ] Add release/versioning notes aligned with CHANGELOG usage.
+- [x] Add release/versioning notes aligned with CHANGELOG usage.
 
 ---
 
