@@ -21,3 +21,6 @@
 .social-sidebar__item a{display:block;width:100%;height:100%}
 .social-sidebar__img,.social-sidebar__svg{width:28px;height:28px;display:block;opacity:.7;-webkit-transition:.2s ease-in-out;-o-transition:.2s ease-in-out;transition:.2s ease-in-out}
 .social-sidebar__item:hover .social-sidebar__img,.social-sidebar__item:hover .social-sidebar__svg{opacity:1}
+
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;clip-path:inset(50%)}
+.content-page__main{padding:40px;max-width:900px;margin:0 auto}
