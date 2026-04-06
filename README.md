@@ -9,26 +9,40 @@ Static portfolio website deployed on Vercel.
 - Vercel security headers config (`vercel.json`)
 
 ## Project structure
-- `src/js/main.js`: maintainable JavaScript source
-- `js/bundle.min.js`: distributed JavaScript bundle
-- `scripts/build_js.py`: build step to refresh bundle from source
-- `scripts/check_js_quality.py`: lightweight quality checks
-- `docs/`: review and planning notes
+- `src/`: human-readable source files (`html`, `css`, `js`)
+- `index.html`, `css/main.min.css`, `js/bundle.min.js`: generated/distributed artifacts
+- `scripts/`: build + quality automation
+- `tests/`: unit and smoke checks
+- `docs/`: governance/process notes
+- `reports/`: generated audit/check reports
+
+## Prerequisites
+- Node.js 20+
+- Python 3.10+ (used by the build and audit scripts)
 
 ## Development workflow
-1. Build JS bundle from source:
+1. Install dependencies:
    ```bash
-   npm run build:js
+   npm install
    ```
-2. Run quality checks:
+2. Build distributable assets and sitemaps:
+   ```bash
+   npm run build
+   ```
+3. Run quality checks:
    ```bash
    npm run check:js
+   npm run check:a11y:ci
+   npm run check:format
+   npm run audit:index
+   npm run audit:images
    ```
-3. Run repository lint checks:
+4. Run repository lint checks and tests:
    ```bash
    npm run lint
+   npm test
    ```
-4. Optional syntax validation:
+5. Optional syntax validation:
    ```bash
    node --check src/js/main.js
    node --check js/bundle.min.js

@@ -46,7 +46,7 @@ def main():
         "note": "Lower byte and tag counts generally improve parse cost and maintainability.",
     }
 
-    output = Path("docs/index-audit.json")
+    output = Path("reports/index-audit.json")
     output.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(f"Wrote {output}")
     print(json.dumps(report, indent=2))

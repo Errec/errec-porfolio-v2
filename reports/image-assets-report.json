@@ -1,0 +1,157 @@
+{
+  "images_scanned": 20,
+  "modern_format_candidates": [
+    "img/bg-box-front.png",
+    "img/foot-bg.png",
+    "img/foot-bg_sm.png",
+    "img/hero_left.png",
+    "img/hero_left_sm.png",
+    "img/hero_right.png",
+    "img/hero_right_sm.png",
+    "favicon/android-chrome-192x192.png",
+    "favicon/android-chrome-512x512.png",
+    "favicon/apple-touch-icon.png",
+    "favicon/favicon-16x16.png",
+    "favicon/favicon-32x32.png",
+    "favicon/mstile-150x150.png"
+  ],
+  "entries": [
+    {
+      "file": "img/bg-box-front.png",
+      "bytes": 2167,
+      "format": "png",
+      "width": 221,
+      "height": 129
+    },
+    {
+      "file": "img/foot-bg.png",
+      "bytes": 224824,
+      "format": "png",
+      "width": 2048,
+      "height": 822
+    },
+    {
+      "file": "img/foot-bg_sm.png",
+      "bytes": 34983,
+      "format": "png",
+      "width": 717,
+      "height": 288
+    },
+    {
+      "file": "img/hero_left.png",
+      "bytes": 99256,
+      "format": "png",
+      "width": 840,
+      "height": 587
+    },
+    {
+      "file": "img/hero_left_sm.png",
+      "bytes": 19898,
+      "format": "png",
+      "width": 336,
+      "height": 235
+    },
+    {
+      "file": "img/hero_right.png",
+      "bytes": 133525,
+      "format": "png",
+      "width": 878,
+      "height": 600
+    },
+    {
+      "file": "img/hero_right_sm.png",
+      "bytes": 25032,
+      "format": "png",
+      "width": 351,
+      "height": 240
+    },
+    {
+      "file": "img/logo.svg",
+      "bytes": 15812,
+      "format": "svg",
+      "viewBox": "0 0 952.9 408.4",
+      "width": "160px",
+      "height": "67px"
+    },
+    {
+      "file": "img/pin.svg",
+      "bytes": 1511,
+      "format": "svg",
+      "viewBox": "0 0 1083.5754 1806.7811",
+      "width": "305.80905mm",
+      "height": "509.91379mm"
+    },
+    {
+      "file": "img/social-sprite.svg",
+      "bytes": 3001,
+      "format": "svg",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "file": "favicon/android-chrome-192x192.png",
+      "bytes": 9756,
+      "format": "png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "file": "favicon/android-chrome-512x512.png",
+      "bytes": 62779,
+      "format": "png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "file": "favicon/apple-touch-icon.png",
+      "bytes": 6448,
+      "format": "png",
+      "width": 180,
+      "height": 180
+    },
+    {
+      "file": "favicon/browserconfig.xml",
+      "bytes": 254,
+      "format": "xml"
+    },
+    {
+      "file": "favicon/favicon-16x16.png",
+      "bytes": 447,
+      "format": "png",
+      "width": 16,
+      "height": 16
+    },
+    {
+      "file": "favicon/favicon-32x32.png",
+      "bytes": 750,
+      "format": "png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "file": "favicon/favicon.ico",
+      "bytes": 15086,
+      "format": "ico"
+    },
+    {
+      "file": "favicon/mstile-150x150.png",
+      "bytes": 5029,
+      "format": "png",
+      "width": 270,
+      "height": 270
+    },
+    {
+      "file": "favicon/safari-pinned-tab.svg",
+      "bytes": 2827,
+      "format": "svg",
+      "viewBox": "0 0 1024.000000 1024.000000",
+      "width": "1024.000000pt",
+      "height": "1024.000000pt"
+    },
+    {
+      "file": "favicon/site.webmanifest",
+      "bytes": 470,
+      "format": "webmanifest"
+    }
+  ],
+  "note": "Candidates list identifies PNG/JPEG assets that can be converted to WebP/AVIF."
+}

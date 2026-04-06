@@ -10,7 +10,7 @@
     "audit:images": "python scripts/audit_images.py",
     "check:js": "python scripts/check_js_quality.py",
     "check:a11y": "python scripts/check_a11y.py",
-    "check:a11y:ci": "python scripts/check_a11y.py --max-errors 0 --report docs/a11y-report.json",
+    "check:a11y:ci": "python scripts/check_a11y.py --max-errors 0 --report reports/a11y-report.json",
     "check:format": "python scripts/check_formatting.py",
     "build:sitemap": "python scripts/generate_sitemaps.py",
     "lint": "python scripts/lint_frontend.py",

@@ -102,7 +102,7 @@ def main():
         "note": "Candidates list identifies PNG/JPEG assets that can be converted to WebP/AVIF.",
     }
 
-    out = Path("docs/image-assets-report.json")
+    out = Path("reports/image-assets-report.json")
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(f"Wrote {out} ({len(entries)} assets)")
 
