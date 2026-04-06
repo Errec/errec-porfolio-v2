@@ -7,35 +7,35 @@ This roadmap converts the latest review into concrete implementation tasks.
 ### 1) Accessibility hardening
 - [x] Add explicit form labels (screen-reader friendly) for contact inputs.
 - [x] Add `aria-invalid` state handling for email/name/message validation.
-- [x] Add per-field helper/error messages and map with `aria-describedby`.
-- [ ] Run automated a11y checks (axe/Lighthouse) and fix critical issues.
+- [ ] Add per-field helper/error messages and map with `aria-describedby`.
+- [x] Run automated a11y checks (axe/Lighthouse) and fix critical issues.
 
 ### 2) Presentation consistency
 - [x] Remove repeated inline `style` attributes from service/article/case pages.
 - [x] Introduce shared `.content-page__main` style utility in CSS.
-- [ ] Migrate remaining one-off styles to reusable classes.
+- [x] Migrate remaining one-off styles to reusable classes.
 
 ### 3) Production cleanliness
 - [x] Remove non-essential production analytics console logging.
 - [x] Add optional debug flag for local analytics troubleshooting.
 
 ### Current implementation sequence (doable tasks)
-1. [x] Add per-field helper/error elements in the contact form markup with dedicated IDs.
-2. [x] Extend form validation to write errors per field and keep `aria-invalid` updated on blur/input.
+1. [ ] Add per-field helper/error elements in the contact form markup with dedicated IDs.
+2. [ ] Extend form validation to write errors per field and keep `aria-invalid` updated on blur/input.
 3. [x] Add an opt-in analytics debug mode (`?analyticsDebug=1`) persisted in localStorage.
-4. [ ] Run automated a11y checks and address critical issues from the report.
+4. [x] Run automated a11y checks and address critical issues from the report.
 5. [ ] Add unit tests for validation logic to protect the new per-field behavior.
 
 ## Phase 2 — Reliability & quality (Week 2)
 
 ### 4) Automated testing foundation
-- [ ] Add unit tests for validation logic and utility behavior (debounce/throttle).
+- [x] Add unit tests for validation logic and utility behavior (debounce/throttle).
 - [ ] Add Playwright smoke tests for navigation + contact form behavior.
-- [ ] Add accessibility CI gate (axe/Lighthouse threshold).
+- [x] Add accessibility CI gate (axe/Lighthouse threshold).
 
 ### 5) Maintainable source structure
-- [ ] Keep human-readable source HTML/CSS files and generate minified artifacts in build.
-- [ ] Add formatter/linter configuration for HTML/CSS/JS consistency.
+- [x] Keep human-readable source HTML/CSS files and generate minified artifacts in build.
+- [x] Add formatter/linter configuration for HTML/CSS/JS consistency.
 
 ## Phase 3 — Performance & platform hardening (Week 3)
 
