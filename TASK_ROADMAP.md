@@ -46,7 +46,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 
 ### 7) Security and policy maturity
 - [ ] Review CSP against analytics/runtime integrations and tighten allowlists.
-- [ ] Add privacy note for form/analytics data handling.
+- [x] Add privacy note for form/analytics data handling.
 
 ## Phase 4 — Governance (Week 4)
 
