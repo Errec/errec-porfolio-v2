@@ -40,7 +40,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 ## Phase 3 — Performance & platform hardening (Week 3)
 
 ### 6) Frontend performance
-- [ ] Audit and reduce `index.html` DOM/markup size.
+- [x] Audit and reduce `index.html` DOM/markup size.
 - [ ] Move heavy decorative SVG/icon markup to reusable sprite strategy where feasible.
 - [ ] Add modern image formats and verify dimensions for all project assets.
 
