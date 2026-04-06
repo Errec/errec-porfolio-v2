@@ -31,7 +31,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 ### 4) Automated testing foundation
 - [x] Add unit tests for validation logic and utility behavior (debounce/throttle).
 - [ ] Add Playwright smoke tests for navigation + contact form behavior.
-- [ ] Add accessibility CI gate (axe/Lighthouse threshold).
+- [x] Add accessibility CI gate (axe/Lighthouse threshold).
 
 ### 5) Maintainable source structure
 - [x] Keep human-readable source HTML/CSS files and generate minified artifacts in build.

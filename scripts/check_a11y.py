@@ -1,5 +1,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import argparse
+import json
 import sys
 
 
@@ -133,6 +135,11 @@ def collect_errors_for_file(path):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Run static accessibility checks.")
+    parser.add_argument("--max-errors", type=int, default=0, help="Maximum allowed accessibility errors.")
+    parser.add_argument("--report", type=str, default="", help="Optional JSON report output path.")
+    args = parser.parse_args()
+
     html_files = expand_html_files()
     if not html_files:
         print("No HTML files found for accessibility checks.")
@@ -144,13 +151,27 @@ def main():
         for error in file_errors:
             all_errors.append(f"{file_path}: {error}")
 
-    if all_errors:
+    report = {
+        "pages_scanned": len(html_files),
+        "error_count": len(all_errors),
+        "max_errors": args.max_errors,
+        "errors": all_errors,
+    }
+
+    if args.report:
+        Path(args.report).write_text(json.dumps(report, indent=2), encoding="utf-8")
+
+    if len(all_errors) > args.max_errors:
         print("A11Y CHECK FAILED")
+        print(f"- Total errors: {len(all_errors)} (max allowed: {args.max_errors})")
         for error in all_errors:
             print(f"- {error}")
         return 1
 
-    print(f"A11Y CHECK PASSED ({len(html_files)} pages scanned)")
+    print(
+        f"A11Y CHECK PASSED ({len(html_files)} pages scanned, "
+        f"errors: {len(all_errors)}, threshold: {args.max_errors})"
+    )
     return 0
 
 
