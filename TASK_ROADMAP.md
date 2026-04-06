@@ -13,7 +13,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 ### 2) Presentation consistency
 - [x] Remove repeated inline `style` attributes from service/article/case pages.
 - [x] Introduce shared `.content-page__main` style utility in CSS.
-- [ ] Migrate remaining one-off styles to reusable classes.
+- [x] Migrate remaining one-off styles to reusable classes.
 
 ### 3) Production cleanliness
 - [x] Remove non-essential production analytics console logging.

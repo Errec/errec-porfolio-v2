@@ -526,32 +526,32 @@ h1, h2, h3, h4 {
   width:100%;
   outline:#151515 solid 4px
 }
-#wli-0 {
+.main-work__item--span-12 {
   -webkit-box-flex:12;
   -ms-flex:12;
   flex:12
 }
-#wli-1 {
+.main-work__item--span-9 {
   -webkit-box-flex:9;
   -ms-flex:9;
   flex:9
 }
-#wli-2 {
+.main-work__item--span-7 {
   -webkit-box-flex:7;
   -ms-flex:7;
   flex:7
 }
-#wli-3 {
+.main-work__item--span-5 {
   -webkit-box-flex:5;
   -ms-flex:5;
   flex:5
 }
-#wli-4 {
+.main-work__item--span-3 {
   -webkit-box-flex:3;
   -ms-flex:3;
   flex:3
 }
-#wli-5 {
+.main-work__item--span-2 {
   -webkit-box-flex:2;
   -ms-flex:2;
   flex:2
@@ -932,22 +932,22 @@ h1, h2, h3, h4 {
     max-width:60px;
     margin:20px
   }
-  #work-img-1 {
+  .main-work__img--weather {
     background-image:url(/img/slider/weather_small.png)
   }
-  #work-img-2 {
+  .main-work__img--map {
     background-image:url(/img/slider/map_small.png)
   }
-  #work-img-3 {
+  .main-work__img--snes {
     background-image:url(/img/slider/snes_small.png)
   }
-  #work-img-4 {
+  .main-work__img--ttts {
     background-image:url(/img/slider/ttts_small.png)
   }
-  #work-img-5 {
+  .main-work__img--brookling {
     background-image:url(/img/slider/brookling-film-festival_small.png)
   }
-  #work-img-6 {
+  .main-work__img--muncak {
     background-image:url(/img/slider/muncak-hiking_small.png)
   }
   .main-work {
@@ -1105,29 +1105,29 @@ h1, h2, h3, h4 {
   .main-work__img--small {
     display:none
   }
-  #wli-0:hover, #wli-1:hover, #wli-2:hover, #wli-3:hover, #wli-4:hover, #wli-5:hover {
+  .main-work__item:hover {
     -webkit-filter:none;
     filter:none;
     -webkit-box-flex:110;
     -ms-flex:110;
     flex:110
   }
-  #work-img-1 {
+  .main-work__img--weather {
     background-image:url(/img/slider/weather_large.png)
   }
-  #work-img-2 {
+  .main-work__img--map {
     background-image:url(/img/slider/map_large.png)
   }
-  #work-img-3 {
+  .main-work__img--snes {
     background-image:url(/img/slider/snes_large.png)
   }
-  #work-img-4 {
+  .main-work__img--ttts {
     background-image:url(/img/slider/ttts_large.png)
   }
-  #work-img-5 {
+  .main-work__img--brookling {
     background-image:url(/img/slider/brookling-film-festival_large.png)
   }
-  #work-img-6 {
+  .main-work__img--muncak {
     background-image:url(/img/slider/muncak-hiking_large.png)
   }
 
