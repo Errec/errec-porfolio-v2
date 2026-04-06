@@ -7,6 +7,7 @@
     "build:html": "python scripts/build_html.py",
     "build": "npm run build:js && npm run build:html && npm run build:sitemap",
     "audit:index": "python scripts/audit_index_html.py",
+    "audit:images": "python scripts/audit_images.py",
     "check:js": "python scripts/check_js_quality.py",
     "check:a11y": "python scripts/check_a11y.py",
     "check:a11y:ci": "python scripts/check_a11y.py --max-errors 0 --report docs/a11y-report.json",
