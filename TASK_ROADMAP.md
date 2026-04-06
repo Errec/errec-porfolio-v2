@@ -51,7 +51,7 @@ This roadmap converts the latest review into concrete implementation tasks.
 ## Phase 4 — Governance (Week 4)
 
 ### 8) Team workflow
-- [ ] Add CONTRIBUTING guide with style, naming, and review checklist.
+- [x] Add CONTRIBUTING guide with style, naming, and review checklist.
 - [ ] Add checklist-driven PR template (a11y, security, performance, tests).
 - [ ] Add release/versioning notes aligned with CHANGELOG usage.
 
